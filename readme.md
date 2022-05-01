@@ -2,7 +2,7 @@
 
 * Остерегаться ES5 синтаксиса
 * Придерживаться [AirBNB Styleguide](https://github.com/leonidlebedev/javascript-airbnb)
-* Самодокументарующийся код и документация
+* Самодокументирующийся код и документация
 
 + Теория и практика отдельно
 + Качество и внимание к деталям
@@ -13,23 +13,22 @@
 #### Задание 1.
 
 Предложите вариант базового класса для успешной работы следующего кода.
-> Подсказка: значение `a` и `b`, переданные в метод `test` должны быть умножены на -1.
-> Хорошо, если сможете привести аргументы, почему этот код плохой.
+> Подсказка: значение `a` и `b`, переданные в метод `test` должны быть умножены на -1. Хорошо, если сможете привести аргументы, почему этот код плохой.
 
 ```
 // Реализуйте класс
 class BaseClass {
-  // ... ваш код
+	// ... ваш код
 }
 
 /* Код ниже не трогаем */
 class MyClass extends BaseClass {
-  test(a, b) {
-    this.a = a;
-    this.b = b;
-    
-    return 100 - this.a + this.b;
-  }
+	test(a, b) {
+		this.a = a;
+		this.b = b;
+		
+		return 100 - this.a + this.b;
+	}
 }
 
 const m = new MyClass();
@@ -59,7 +58,7 @@ console.log(func(input)); // [10, 8, 6, 4, 2, -2, -11, -1, 3, 5, 7, 9]
 const str = 'Flexbe. Frontend. Test. 1234567890.';
 
 const func = str => {
-  // ... ваш код
+	// ... ваш код
 }
 
 console.log(func(str)); // 9
@@ -71,25 +70,25 @@ console.log(func(str)); // 9
 
 ```
 function drawRating(vote) {
-  if (vote >= 0 && vote <= 20) {
-    return '★☆☆☆☆';
-  }
-  else if (vote > 20 && vote <= 40) {
-    return '★★☆☆☆';
-  }
-  else if (vote > 40 && vote <= 60) {
-    return '★★★☆☆';
-  }
-  else if (vote > 60 && vote <= 80) {
-    return '★★★★☆';
-  }
-  else if (vote > 80 && vote <= 100) {
-    return '★★★★★';
-  }
+	if (vote >= 0 && vote <= 20) {
+		return '★☆☆☆☆';
+	}
+	else if (vote > 20 && vote <= 40) {
+		return '★★☆☆☆';
+	}
+	else if (vote > 40 && vote <= 60) {
+		return '★★★☆☆';
+	}
+	else if (vote > 60 && vote <= 80) {
+		return '★★★★☆';
+	}
+	else if (vote > 80 && vote <= 100) {
+		return '★★★★★';
+	}
 }
 ```
 
-#### Задание 5/
+#### Задание 5.
 
 Задачка посложнее, на асинхронность. Имеется объект фиксированной структуры, хранящий значения по некоторым ID в разных форматах, а также сервис, отдающий данные по каждому ID.
 > Функция `mainFn` должна загрузить данные по каждому ID в объекте и запустить `resultFn` с готовым объектом данных.
@@ -108,16 +107,16 @@ function drawRating(vote) {
  * @param callback {Function<Error, Object>} - Коллбек функция, возвращающая результирующие данные
 */
 const getData = (id, callback = () => {}) => {
-  if (!id) {
-    return callback(new Error('getData: ID not specified'));
-  }
-  
-  setTimeout(() => {
-    const data= {
-      utime: Date.now()
-    };
-    callback(null, data);
-  }, Math.random() * 1000);
+	if (!id) {
+		return callback(new Error('getData: ID not specified'));
+	}
+	
+	setTimeout(() => {
+		const data= {
+			utime: Date.now()
+		};
+		callback(null, data);
+	}, Math.random() * 1000);
 };
 
 /**
@@ -128,26 +127,26 @@ const getData = (id, callback = () => {}) => {
  * @result {Promise<Object>} - Полный объект с данными от сервера
 */
 const mainFn = data => {
-  // ... ваш код
-  
-  return Promise.resolve(...);
+	// ... ваш код
+	
+	return Promise.resolve(...);
 };
 
 // Вызов вашей   функции, должен вызвать resultFn в итоге
 mainFn({
-  id: 78,
-  title: 'Some title',
-  single: 12345,
-  multiple: [56783, 46573, 13251]
+	id: 78,
+	title: 'Some title',
+	single: 12345,
+	multiple: [56783, 46573, 13251]
 }).then(result => {
-  console.log(result);
-  /**
-    {
-      id: 78,
-      title: 'Some title',
-      single: { id: 12345, data: { utime: ... }},
-      multiple: [{ id: 56783, data: { utime: ... }}, { id: 46573, data: { utime: ... }}, { id: 13251, data: {utime: ... }}]
-    }
-  */
+	console.log(result);
+	/**
+		{
+			id: 78,
+			title: 'Some title',
+			single: { id: 12345, data: { utime: ... }},
+			multiple: [{ id: 56783, data: { utime: ... }}, { id: 46573, data: { utime: ... }}, { id: 13251, data: {utime: ... }}]
+		}
+	*/
 });
 ```
