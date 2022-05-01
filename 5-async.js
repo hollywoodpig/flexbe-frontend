@@ -35,7 +35,7 @@ const mainFn = async data => {
 		},
 		multiple: await Promise.all(data.multiple.map(async item => ({
 			id: item,
-			data: await getDataPromise(data.single)
+			data: await getDataPromise(item)
 		})))
 	}
 
