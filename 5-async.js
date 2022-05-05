@@ -1,8 +1,3 @@
-/**
- * @param id {Number} - ID записи
- * @param callback {Function<Error, Object>} - Коллбек функция возвращающая результирующие данные
-*/
-
 const getData = (id, callback = () => {}) => {
 	if (!id) {
 		return callback(new Error('getData: ID not specified'))
@@ -16,8 +11,7 @@ const getData = (id, callback = () => {}) => {
 }
 
 /**
- * @param data {Object} - Исходный объект
- * @result {Promise<Object>} - Полный объект с данными от сервера
+ * Оборачиваем функцию-сервис в Promise
 */
 
 const getDataPromise = id => {
@@ -25,6 +19,11 @@ const getDataPromise = id => {
 		getData(id, (empty, time) => resolve(time))
 	})
 }
+
+/**
+ * Преобразовываем переданный объект, используя конструкцию async / await
+ * Как видно ниже, в поля data записываются значения от сервиса
+ */
 
 const mainFn = async data => {
 	const newData = {
@@ -47,14 +46,4 @@ mainFn({
 	title: 'Some title',
 	single: 12345,
 	multiple: [56783, 46573, 13251]
-}).then((result) => {
-	console.log(result)
-	/**
-		{
-			id: 78,
-			title: 'Some title',
-			single: { id: 12345, data: { utime: ... }},
-			multiple: [{ id: 56783, data: { utime: ... }}, { id: 46573, data: { utime: ... }}, { id: 13251, data: {utime: ... }}]
-		}
-	 */
-})
+}).then(result => console.log(result))
