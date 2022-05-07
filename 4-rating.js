@@ -6,4 +6,9 @@ function drawRating(vote) {
 	if (vote > 80 && vote <= 100) return '★★★★★'
 }
 
+/**
+ * Как я понимаю, тут можно только убрать else
+ * А также сделать if в 1 строку
+*/
+
 console.log(drawRating(10))

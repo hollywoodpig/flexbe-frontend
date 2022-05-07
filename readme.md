@@ -4,7 +4,7 @@
 
 Решение теоретической части находится в данном репозитории
 
-## Решение практической части
+## Практическая часть
 
 * [Модальное окно](https://codepen.io/randomrandomrandom/pen/zYpQwON)
 * [Parallax при наведении мыши](https://codepen.io/randomrandomrandom/pen/poaJXeG)
