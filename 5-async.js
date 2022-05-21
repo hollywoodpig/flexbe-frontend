@@ -16,7 +16,7 @@ const getData = (id, callback = () => {}) => {
 
 const getDataPromise = id => {
 	return new Promise(resolve => {
-		getData(id, (empty, time) => resolve(time))
+		getData(id, (_, time) => resolve(time))
 	})
 }
 
